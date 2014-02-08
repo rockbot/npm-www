@@ -26,31 +26,42 @@
       }
     },
     {
-      "_id": "org.couchdb.user:'",
-      "name": "'",
+      "_id": "org.couchdb.user:admin",
+      "_rev": "1-809f9374da2de1583d6ddd734cf6aab8",
+      "name": "admin",
+      "salt": "5c2b1432c10ec1bace25169e88eaf9e912995477bd6abadfa0f264883b3b",
+      "password_sha": "37bb39679d9c8081aeb8de87510cf3839028de26",
+      "email": "admin@example.com",
+      "type": "user",
+      "roles": [],
+      "date": "2014-02-06T20:36:41.050Z"
+    },
+    {
+      "_id": "org.couchdb.user:alpha",
+      "name": "alpha",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "'@example.com",
+      "email": "alpha@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-12-09T22:38:06.264Z"
     },
     {
-      "_id": "org.couchdb.user:(js)",
-      "name": "(js)",
+      "_id": "org.couchdb.user:beta",
+      "name": "beta",
       "roles": [],
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2012-09-26T06:46:48.050Z",
-      "email": "(js)@example.com"
+      "email": "beta@example.com"
     },
     {
-      "_id": "org.couchdb.user:-rov",
-      "name": "-rov",
+      "_id": "org.couchdb.user:chi",
+      "name": "chi",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "-rov@example.com",
+      "email": "chi@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-09-21T02:40:49.517Z",
@@ -106,26 +117,26 @@
       "twitter": "https://twitter.com/r043v",
       "appdotnet": "",
       "homepage": "http://procvor.free.fr",
-      "freenode": "-rov"
+      "freenode": "chi"
     },
     {
-      "_id": "org.couchdb.user:-v",
-      "name": "-v",
+      "_id": "org.couchdb.user:delta",
+      "name": "delta",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "-v@example.com",
+      "email": "delta@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-11-01T14:20:53.688Z"
     },
     {
-      "_id": "org.couchdb.user:.",
-      "name": ".",
+      "_id": "org.couchdb.user:echo",
+      "name": "echo",
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-04-17T10:05:41.088Z",
-      "email": ".@example.com",
+      "email": "echo@example.com",
       "mustChangePass": "false",
       "avatar": "https://secure.gravatar.com/avatar/c612da2dba8fc89a6577324e21f71676?s=50&d=retro",
       "avatarMedium": "https://secure.gravatar.com/avatar/c612da2dba8fc89a6577324e21f71676?s=100&d=retro",
@@ -184,63 +195,63 @@
       "goober": 0.7381158452481031
     },
     {
-      "_id": "org.couchdb.user:...Max...",
-      "name": "...Max...",
+      "_id": "org.couchdb.user:gamma",
+      "name": "gamma",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "...Max...@example.com",
+      "email": "gamma@example.com",
       "type": "user",
       "roles": [],
       "date": "2012-04-18T14:33:36.061Z"
     },
     {
-      "_id": "org.couchdb.user:...max...",
-      "name": "...max...",
+      "_id": "org.couchdb.user:epsilon",
+      "name": "epsilon",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "...max...@example.com",
+      "email": "epsilon@example.com",
       "type": "user",
       "roles": [],
       "date": "2012-04-18T14:35:04.504Z"
     },
     {
-      "_id": "org.couchdb.user:0",
-      "name": "0",
+      "_id": "org.couchdb.user:zeta",
+      "name": "zeta",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "0@example.com",
+      "email": "zeta@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-02-06T02:38:47.244Z"
     },
     {
-      "_id": "org.couchdb.user:00davo",
-      "name": "00davo",
+      "_id": "org.couchdb.user:eta",
+      "name": "eta",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "00davo@example.com",
+      "email": "eta@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-06-25T03:41:27.015Z"
     },
     {
-      "_id": "org.couchdb.user:06wj",
-      "name": "06wj",
+      "_id": "org.couchdb.user:theta",
+      "name": "theta",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "06wj@example.com",
+      "email": "theta@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-06-08T09:31:26.807Z"
     },
     {
-      "_id": "org.couchdb.user:07jfxiao",
-      "name": "07jfxiao",
+      "_id": "org.couchdb.user:iota",
+      "name": "iota",
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-11-02T07:47:45.928Z",
-      "email": "07jfxiao@example.com",
+      "email": "iota@example.com",
       "avatar": "https://secure.gravatar.com/avatar/556f84c5a445d6be502f7ac2b09eb3df?s=50&d=retro",
       "avatarMedium": "https://secure.gravatar.com/avatar/556f84c5a445d6be502f7ac2b09eb3df?s=100&d=retro",
       "avatarLarge": "https://secure.gravatar.com/avatar/556f84c5a445d6be502f7ac2b09eb3df?s=496&d=retro",
@@ -298,13 +309,13 @@
       "mustChangePass": false
     },
     {
-      "_id": "org.couchdb.user:0_o",
-      "name": "0_o",
+      "_id": "org.couchdb.user:kappa",
+      "name": "kappa",
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-11-22T06:59:58.321Z",
-      "email": "0_o@example.com",
+      "email": "kappa@example.com",
       "avatar": "https://secure.gravatar.com/avatar/723ad9e29056e993cdfe9686697930a0?s=50&d=retro",
       "avatarMedium": "https://secure.gravatar.com/avatar/723ad9e29056e993cdfe9686697930a0?s=100&d=retro",
       "avatarLarge": "https://secure.gravatar.com/avatar/723ad9e29056e993cdfe9686697930a0?s=496&d=retro",
@@ -362,21 +373,21 @@
       "mustChangePass": false
     },
     {
-      "_id": "org.couchdb.user:0i0",
-      "name": "0i0",
+      "_id": "org.couchdb.user:lambda",
+      "name": "lambda",
       "roles": [],
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-08-15T17:57:37.746Z",
-      "email": "0i0@example.com"
+      "email": "lambda@example.com"
     },
     {
-      "_id": "org.couchdb.user:0ip",
-      "name": "0ip",
+      "_id": "org.couchdb.user:mu",
+      "name": "mu",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "0ip@example.com",
+      "email": "mu@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-02-23T15:02:10.061Z",
@@ -428,30 +439,30 @@
         }
       ],
       "fullname": "Robin",
-      "github": "0ip",
+      "github": "mu",
       "twitter": "",
       "appdotnet": "",
       "homepage": "https://factor.cc/",
       "freenode": "exa"
     },
     {
-      "_id": "org.couchdb.user:0medvedkoo",
-      "name": "0medvedkoo",
+      "_id": "org.couchdb.user:nu",
+      "name": "nu",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "0medvedkoo@example.com",
+      "email": "nu@example.com",
       "type": "user",
       "roles": [],
       "date": "2014-01-26T07:16:09.751Z"
     },
     {
-      "_id": "org.couchdb.user:0verflow",
-      "name": "0verflow",
+      "_id": "org.couchdb.user:ksi",
+      "name": "ksi",
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-12-24T14:38:15.352Z",
-      "email": "0verflow@example.com",
+      "email": "ksi@example.com",
       "avatar": "https://secure.gravatar.com/avatar/fc17dacad632101c29c589f28916b918?s=50&d=retro",
       "avatarMedium": "https://secure.gravatar.com/avatar/fc17dacad632101c29c589f28916b918?s=100&d=retro",
       "avatarLarge": "https://secure.gravatar.com/avatar/fc17dacad632101c29c589f28916b918?s=496&d=retro",
@@ -464,9 +475,9 @@
         },
         {
           "name": "email",
-          "value": "0verflow@sina.com",
+          "value": "ksi@sina.com",
           "title": "Email",
-          "show": "<a href=\"mailto:0verflow@sina.com\">0verflow@sina.com</a>"
+          "show": "<a href=\"mailto:ksi@sina.com\">ksi@sina.com</a>"
         },
         {
           "name": "github",
@@ -508,11 +519,11 @@
       "roles": []
     },
     {
-      "_id": "org.couchdb.user:0x0539",
-      "name": "0x0539",
+      "_id": "org.couchdb.user:omicron",
+      "name": "omicron",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "0x0539@example.com",
+      "email": "omicron@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-04-16T17:14:23.541Z",
@@ -564,38 +575,38 @@
         }
       ],
       "fullname": "Sebastian Goodman",
-      "github": "0x0539",
+      "github": "omicron",
       "twitter": "",
       "appdotnet": "",
       "homepage": "",
       "freenode": ""
     },
     {
-      "_id": "org.couchdb.user:0x19",
-      "name": "0x19",
+      "_id": "org.couchdb.user:pi",
+      "name": "pi",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "0x19@example.com",
+      "email": "pi@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-03-07T15:20:37.663Z"
     },
     {
-      "_id": "org.couchdb.user:0xbadf00d",
-      "name": "0xbadf00d",
+      "_id": "org.couchdb.user:rho",
+      "name": "rho",
       "roles": [],
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-12-03T10:24:35.616Z",
-      "email": "0xbadf00d@example.com"
+      "email": "rho@example.com"
     },
     {
-      "_id": "org.couchdb.user:0xe4783995",
-      "name": "0xe4783995",
+      "_id": "org.couchdb.user:sigma",
+      "name": "sigma",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "0xe4783995@example.com",
+      "email": "sigma@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-06-10T04:41:09.755Z",
@@ -654,11 +665,11 @@
       "freenode": ""
     },
     {
-      "_id": "org.couchdb.user:0xfede",
-      "name": "0xfede",
+      "_id": "org.couchdb.user:tau",
+      "name": "tau",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "0xfede@example.com",
+      "email": "tau@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-06-03T17:12:53.201Z",
@@ -710,20 +721,20 @@
         }
       ],
       "fullname": "Federico Pinna",
-      "github": "https://github.com/0xfede",
-      "twitter": "@0xfede",
+      "github": "https://github.com/tau",
+      "twitter": "@tau",
       "appdotnet": "",
-      "homepage": "www.0xfede.com",
+      "homepage": "www.tau.com",
       "freenode": ""
     },
     {
-      "_id": "org.couchdb.user:0xfeedface",
-      "name": "0xfeedface",
+      "_id": "org.couchdb.user:upsilon",
+      "name": "upsilon",
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-11-12T18:11:26.251Z",
-      "email": "0xfeedface@example.com",
+      "email": "upsilon@example.com",
       "avatar": "https://secure.gravatar.com/avatar/72ed182720b3a5f65b9c7e46b2668fde?s=50&d=retro",
       "avatarMedium": "https://secure.gravatar.com/avatar/72ed182720b3a5f65b9c7e46b2668fde?s=100&d=retro",
       "avatarLarge": "https://secure.gravatar.com/avatar/72ed182720b3a5f65b9c7e46b2668fde?s=496&d=retro",
@@ -772,7 +783,7 @@
         }
       ],
       "fullname": "Norman Heino",
-      "github": "0xfeedface",
+      "github": "upsilon",
       "twitter": "",
       "appdotnet": "",
       "homepage": "",
@@ -780,13 +791,13 @@
       "roles": []
     },
     {
-      "_id": "org.couchdb.user:0xmilk_",
-      "name": "0xmilk_",
+      "_id": "org.couchdb.user:phi",
+      "name": "phi",
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-11-01T01:35:01.797Z",
-      "email": "0xmilk_@example.com",
+      "email": "phi@example.com",
       "avatar": "https://secure.gravatar.com/avatar/4cde38a26a733d7f3a227eab3a7b7e7e?s=50&d=retro",
       "avatarMedium": "https://secure.gravatar.com/avatar/4cde38a26a733d7f3a227eab3a7b7e7e?s=100&d=retro",
       "avatarLarge": "https://secure.gravatar.com/avatar/4cde38a26a733d7f3a227eab3a7b7e7e?s=496&d=retro",
@@ -843,13 +854,13 @@
       "roles": []
     },
     {
-      "_id": "org.couchdb.user:0xy",
-      "name": "0xy",
+      "_id": "org.couchdb.user:psi",
+      "name": "psi",
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-08-27T05:43:42.834Z",
-      "email": "0xy@example.com",
+      "email": "psi@example.com",
       "avatar": "https://secure.gravatar.com/avatar/8f8f604430a6a2116749fad87c9c86d5?s=50&d=retro",
       "avatarMedium": "https://secure.gravatar.com/avatar/8f8f604430a6a2116749fad87c9c86d5?s=100&d=retro",
       "avatarLarge": "https://secure.gravatar.com/avatar/8f8f604430a6a2116749fad87c9c86d5?s=496&d=retro",
@@ -906,21 +917,21 @@
       "roles": []
     },
     {
-      "_id": "org.couchdb.user:1",
-      "name": "1",
+      "_id": "org.couchdb.user:omega",
+      "name": "omega",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "1@example.com",
+      "email": "omega@example.com",
       "type": "user",
       "roles": [],
       "date": "2012-07-09T15:02:02.608Z"
     },
     {
-      "_id": "org.couchdb.user:1000ch",
-      "name": "1000ch",
+      "_id": "org.couchdb.user:bravo",
+      "name": "bravo",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "1000ch@example.com",
+      "email": "bravo@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-12-02T16:59:13.466Z",
@@ -934,21 +945,21 @@
         },
         {
           "name": "email",
-          "value": "orz1000ch@gmail.com",
+          "value": "orzbravo@gmail.com",
           "title": "Email",
-          "show": "<a href=\"mailto:orz1000ch@gmail.com\">orz1000ch@gmail.com</a>"
+          "show": "<a href=\"mailto:orzbravo@gmail.com\">orzbravo@gmail.com</a>"
         },
         {
           "name": "github",
-          "value": "http://github.com/1000ch",
+          "value": "http://github.com/bravo",
           "title": "Github",
-          "show": "<a rel=\"me\" href=\"https://github.com/http://github.com/1000ch\">http://github.com/1000ch</a>"
+          "show": "<a rel=\"me\" href=\"https://github.com/http://github.com/bravo\">http://github.com/bravo</a>"
         },
         {
           "name": "twitter",
-          "value": "1000ch",
+          "value": "bravo",
           "title": "Twitter",
-          "show": "<a rel=\"me\" href=\"https://twitter.com/1000ch\">@1000ch</a>"
+          "show": "<a rel=\"me\" href=\"https://twitter.com/bravo\">@bravo</a>"
         },
         {
           "name": "appdotnet",
@@ -958,9 +969,9 @@
         },
         {
           "name": "homepage",
-          "value": "http://1000ch.net/",
+          "value": "http://bravo.net/",
           "title": "Homepage",
-          "show": "<a rel=\"me\" href=\"http://1000ch.net/\">http://1000ch.net/</a>"
+          "show": "<a rel=\"me\" href=\"http://bravo.net/\">http://bravo.net/</a>"
         },
         {
           "name": "freenode",
@@ -970,20 +981,20 @@
         }
       ],
       "avatarMedium": "https://secure.gravatar.com/avatar/6215fbf9fcf7b65bcd1dce838a7fdb03?s=100&d=retro",
-      "github": "1000ch",
-      "homepage": "http://1000ch.net/",
-      "twitter": "1000ch",
+      "github": "bravo",
+      "homepage": "http://bravo.net/",
+      "twitter": "bravo",
       "avatar": "https://secure.gravatar.com/avatar/6215fbf9fcf7b65bcd1dce838a7fdb03?s=50&d=retro",
       "freenode": "",
       "avatarLarge": "https://secure.gravatar.com/avatar/6215fbf9fcf7b65bcd1dce838a7fdb03?s=496&d=retro",
       "appdotnet": ""
     },
     {
-      "_id": "org.couchdb.user:100hz",
-      "name": "100hz",
+      "_id": "org.couchdb.user:charlie",
+      "name": "charlie",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "100hz@example.com",
+      "email": "charlie@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-06-11T09:31:11.645Z",
@@ -1003,9 +1014,9 @@
         },
         {
           "name": "github",
-          "value": "https://github.com/100hz",
+          "value": "https://github.com/charlie",
           "title": "Github",
-          "show": "<a rel=\"me\" href=\"https://github.com/https://github.com/100hz\">https://github.com/100hz</a>"
+          "show": "<a rel=\"me\" href=\"https://github.com/https://github.com/charlie\">https://github.com/charlie</a>"
         },
         {
           "name": "twitter",
@@ -1033,7 +1044,7 @@
         }
       ],
       "avatarMedium": "https://secure.gravatar.com/avatar/b3303d2eb5f289e91bc2e8513a74aa9b?s=100&d=retro",
-      "github": "https://github.com/100hz",
+      "github": "https://github.com/charlie",
       "homepage": "http://theblackestbox.net",
       "twitter": "",
       "avatar": "https://secure.gravatar.com/avatar/b3303d2eb5f289e91bc2e8513a74aa9b?s=50&d=retro",
@@ -1043,21 +1054,21 @@
       "mustChangePass": false
     },
     {
-      "_id": "org.couchdb.user:10102009",
-      "name": "10102009",
+      "_id": "org.couchdb.user:alfa",
+      "name": "alfa",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "10102009@example.com",
+      "email": "alfa@example.com",
       "type": "user",
       "roles": [],
       "date": "2011-08-22T23:51:02.683Z"
     },
     {
-      "_id": "org.couchdb.user:101loops",
-      "name": "101loops",
+      "_id": "org.couchdb.user:foxtrot",
+      "name": "foxtrot",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "101loops@example.com",
+      "email": "foxtrot@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-08-12T12:38:53.179Z",
@@ -1073,9 +1084,9 @@
         },
         {
           "name": "email",
-          "value": "npm@101loops.com",
+          "value": "npm@foxtrot.com",
           "title": "Email",
-          "show": "<a href=\"mailto:npm@101loops.com\">npm@101loops.com</a>"
+          "show": "<a href=\"mailto:npm@foxtrot.com\">npm@foxtrot.com</a>"
         },
         {
           "name": "github",
@@ -1112,35 +1123,35 @@
       "github": "",
       "twitter": "",
       "appdotnet": "",
-      "homepage": "http://101loops.com",
+      "homepage": "http://foxtrot.com",
       "freenode": ""
     },
     {
-      "_id": "org.couchdb.user:105059502",
-      "name": "105059502",
+      "_id": "org.couchdb.user:golf",
+      "name": "golf",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "105059502@example.com",
+      "email": "golf@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-10-14T08:41:47.788Z"
     },
     {
-      "_id": "org.couchdb.user:1052539",
-      "name": "1052539",
+      "_id": "org.couchdb.user:hotel",
+      "name": "hotel",
       "roles": [],
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-04-04T17:48:34.452Z",
-      "email": "1052539@example.com"
+      "email": "hotel@example.com"
     },
     {
-      "_id": "org.couchdb.user:10iii",
-      "name": "10iii",
+      "_id": "org.couchdb.user:india",
+      "name": "india",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "10iii@example.com",
+      "email": "india@example.com",
       "type": "user",
       "roles": [],
       "date": "2012-11-27T06:39:05.948Z",
@@ -1154,21 +1165,21 @@
         },
         {
           "name": "email",
-          "value": "10iiishisan@gmail.com",
+          "value": "indiashisan@gmail.com",
           "title": "Email",
-          "show": "<a href=\"mailto:10iiishisan@gmail.com\">10iiishisan@gmail.com</a>"
+          "show": "<a href=\"mailto:indiashisan@gmail.com\">indiashisan@gmail.com</a>"
         },
         {
           "name": "github",
-          "value": "https://github.com/10iii",
+          "value": "https://github.com/india",
           "title": "Github",
-          "show": "<a href=\"https://github.com/https://github.com/10iii\">https://github.com/10iii</a>"
+          "show": "<a href=\"https://github.com/https://github.com/india\">https://github.com/india</a>"
         },
         {
           "name": "twitter",
-          "value": "10iii",
+          "value": "india",
           "title": "Twitter",
-          "show": "<a href=\"https://twitter.com/10iii\">@10iii</a>"
+          "show": "<a href=\"https://twitter.com/india\">@india</a>"
         },
         {
           "name": "appdotnet",
@@ -1190,113 +1201,113 @@
         }
       ],
       "avatarMedium": "https://secure.gravatar.com/avatar/5ab12ba4fb427722907d71485850fe1a?s=100&d=retro",
-      "github": "10iii",
+      "github": "india",
       "homepage": "",
-      "twitter": "10iii",
+      "twitter": "india",
       "avatar": "https://secure.gravatar.com/avatar/5ab12ba4fb427722907d71485850fe1a?s=50&d=retro",
       "freenode": "",
       "avatarLarge": "https://secure.gravatar.com/avatar/5ab12ba4fb427722907d71485850fe1a?s=496&d=retro",
       "appdotnet": ""
     },
     {
-      "_id": "org.couchdb.user:11rcombs",
-      "name": "11rcombs",
+      "_id": "org.couchdb.user:juliett",
+      "name": "juliett",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "11rcombs@example.com",
+      "email": "juliett@example.com",
       "type": "user",
       "roles": [],
       "date": "2012-05-11T05:20:26.652Z"
     },
     {
-      "_id": "org.couchdb.user:1205reflection.",
-      "name": "1205reflection.",
+      "_id": "org.couchdb.user:kilo.",
+      "name": "kilo.",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "1205reflection.@example.com",
+      "email": "kilo.@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-12-12T16:59:28.626Z",
       "mustChangePass": false
     },
     {
-      "_id": "org.couchdb.user:123",
-      "name": "123",
+      "_id": "org.couchdb.user:lima",
+      "name": "lima",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "123@example.com",
+      "email": "lima@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-10-29T09:27:56.241Z"
     },
     {
-      "_id": "org.couchdb.user:123123",
-      "name": "123123",
+      "_id": "org.couchdb.user:mike",
+      "name": "mike",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "123123@example.com",
+      "email": "mike@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-07-27T13:27:42.711Z"
     },
     {
-      "_id": "org.couchdb.user:1234",
-      "name": "1234",
+      "_id": "org.couchdb.user:november",
+      "name": "november",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "1234@example.com",
+      "email": "november@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-09-10T15:54:58.263Z"
     },
     {
-      "_id": "org.couchdb.user:12345",
-      "name": "12345",
+      "_id": "org.couchdb.user:oscar",
+      "name": "oscar",
       "roles": [],
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-03-05T08:34:38.051Z",
-      "email": "12345@example.com"
+      "email": "oscar@example.com"
     },
     {
-      "_id": "org.couchdb.user:1283971298371892379812739281",
-      "name": "1283971298371892379812739281",
+      "_id": "org.couchdb.user:papa",
+      "name": "papa",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "1283971298371892379812739281@example.com",
+      "email": "papa@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-11-05T23:36:38.771Z"
     },
     {
-      "_id": "org.couchdb.user:12d69b255486497",
-      "name": "12d69b255486497",
+      "_id": "org.couchdb.user:quebec",
+      "name": "quebec",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "12d69b255486497@example.com",
+      "email": "quebec@example.com",
       "type": "user",
       "roles": [],
       "date": "2014-01-08T18:31:44.389Z"
     },
     {
-      "_id": "org.couchdb.user:12d69b2554864979",
-      "name": "12d69b2554864979",
+      "_id": "org.couchdb.user:romeo",
+      "name": "romeo",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "12d69b2554864979@example.com",
+      "email": "romeo@example.com",
       "type": "user",
       "roles": [],
       "date": "2014-01-08T18:32:35.086Z"
     },
     {
-      "_id": "org.couchdb.user:1337",
-      "name": "1337",
+      "_id": "org.couchdb.user:sierra",
+      "name": "sierra",
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-07-19T01:27:42.185Z",
-      "email": "1337@example.com",
+      "email": "sierra@example.com",
       "avatar": "https://secure.gravatar.com/avatar/0aa53adfd7a07fbad9fbc732fc84e89e?s=50&d=retro",
       "avatarMedium": "https://secure.gravatar.com/avatar/0aa53adfd7a07fbad9fbc732fc84e89e?s=100&d=retro",
       "avatarLarge": "https://secure.gravatar.com/avatar/0aa53adfd7a07fbad9fbc732fc84e89e?s=496&d=retro",
@@ -1353,13 +1364,13 @@
       "roles": []
     },
     {
-      "_id": "org.couchdb.user:13851566011",
-      "name": "13851566011",
+      "_id": "org.couchdb.user:tango",
+      "name": "tango",
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2012-12-03T08:22:29.699Z",
-      "email": "13851566011@example.com",
+      "email": "tango@example.com",
       "avatar": "https://secure.gravatar.com/avatar/78e05c3fe6aa5c998911b291ab5c6620?s=50&d=retro",
       "avatarMedium": "https://secure.gravatar.com/avatar/78e05c3fe6aa5c998911b291ab5c6620?s=100&d=retro",
       "avatarLarge": "https://secure.gravatar.com/avatar/78e05c3fe6aa5c998911b291ab5c6620?s=496&d=retro",
@@ -1372,9 +1383,9 @@
         },
         {
           "name": "email",
-          "value": "138515660111@139.com",
+          "value": "tango1@139.com",
           "title": "Email",
-          "show": "<a href=\"mailto:138515660111@139.com\">138515660111@139.com</a>"
+          "show": "<a href=\"mailto:tango1@139.com\">tango1@139.com</a>"
         },
         {
           "name": "github",
@@ -1416,23 +1427,23 @@
       "roles": []
     },
     {
-      "_id": "org.couchdb.user:13k",
-      "name": "13k",
+      "_id": "org.couchdb.user:uniform",
+      "name": "uniform",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "13k@example.com",
+      "email": "uniform@example.com",
       "type": "user",
       "roles": [],
       "date": "2012-03-23T05:02:36.817Z"
     },
     {
-      "_id": "org.couchdb.user:13protons",
-      "name": "13protons",
+      "_id": "org.couchdb.user:victor",
+      "name": "victor",
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-12-06T02:17:19.447Z",
-      "email": "13protons@example.com",
+      "email": "victor@example.com",
       "avatar": "https://secure.gravatar.com/avatar/4a0cbd949251fc402ceb44579a7f4985?s=50&d=retro",
       "avatarMedium": "https://secure.gravatar.com/avatar/4a0cbd949251fc402ceb44579a7f4985?s=100&d=retro",
       "avatarLarge": "https://secure.gravatar.com/avatar/4a0cbd949251fc402ceb44579a7f4985?s=496&d=retro",
@@ -1445,9 +1456,9 @@
         },
         {
           "name": "email",
-          "value": "alan@13protons.com",
+          "value": "alan@victor.com",
           "title": "Email",
-          "show": "<a href=\"mailto:alan@13protons.com\">alan@13protons.com</a>"
+          "show": "<a href=\"mailto:alan@victor.com\">alan@victor.com</a>"
         },
         {
           "name": "github",
@@ -1482,18 +1493,18 @@
       ],
       "fullname": "Alan Languirand",
       "github": "alanguir",
-      "twitter": "13protons",
+      "twitter": "victor",
       "appdotnet": "",
       "homepage": "",
       "freenode": "",
       "roles": []
     },
     {
-      "_id": "org.couchdb.user:13w",
-      "name": "13w",
+      "_id": "org.couchdb.user:whiskey",
+      "name": "whiskey",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "13w@example.com",
+      "email": "whiskey@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-11-08T12:20:14.402Z",
@@ -1545,18 +1556,18 @@
         }
       ],
       "fullname": "Vladimir",
-      "github": "13w",
+      "github": "whiskey",
       "twitter": "",
       "appdotnet": "",
       "homepage": "",
       "freenode": ""
     },
     {
-      "_id": "org.couchdb.user:1412",
-      "name": "1412",
+      "_id": "org.couchdb.user:xray",
+      "name": "xray",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "1412@example.com",
+      "email": "xray@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-11-08T04:18:34.706Z",
@@ -1608,30 +1619,30 @@
         }
       ],
       "fullname": "Decky Fiyemonda",
-      "github": "https://github.com/1412",
+      "github": "https://github.com/xray",
       "twitter": "",
       "appdotnet": "",
       "homepage": "",
       "freenode": ""
     },
     {
-      "_id": "org.couchdb.user:1620k",
-      "name": "1620k",
+      "_id": "org.couchdb.user:yankee",
+      "name": "yankee",
       "salt": "cookie",
       "password_sha": "nomnomcake",
-      "email": "1620k@example.com",
+      "email": "yankee@example.com",
       "type": "user",
       "roles": [],
       "date": "2013-10-30T05:43:48.306Z"
     },
     {
-      "_id": "org.couchdb.user:17xande",
-      "name": "17xande",
+      "_id": "org.couchdb.user:zulu",
+      "name": "zulu",
       "type": "user",
       "password_sha": "nomnomcake",
       "salt": "cookie",
       "date": "2013-07-25T20:28:57.794Z",
-      "email": "17xande@example.com",
+      "email": "zulu@example.com",
       "avatar": "https://secure.gravatar.com/avatar/bdff2cc237e0f423706563be675e6648?s=50&d=retro",
       "avatarMedium": "https://secure.gravatar.com/avatar/bdff2cc237e0f423706563be675e6648?s=100&d=retro",
       "avatarLarge": "https://secure.gravatar.com/avatar/bdff2cc237e0f423706563be675e6648?s=496&d=retro",
@@ -1644,9 +1655,9 @@
         },
         {
           "name": "email",
-          "value": "17xande@gmail.com",
+          "value": "zulu@gmail.com",
           "title": "Email",
-          "show": "<a href=\"mailto:17xande@gmail.com\">17xande@gmail.com</a>"
+          "show": "<a href=\"mailto:zulu@gmail.com\">zulu@gmail.com</a>"
         },
         {
           "name": "github",
