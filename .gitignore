@@ -21,3 +21,4 @@ static/webfonts/
 search.log
 dev/elasticsearch/data
 dev/elasticsearch/logs
+dev/user_upload_complete.dat
