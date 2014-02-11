@@ -166,18 +166,19 @@ function handle (req, res) {
 
 
 function lookupUserByEmail (em, req, res) {
-  var pe = '/-/user-by-email/' + em
-
-  npm.registry.get(pe, function (er, u, resp) {
+  var couch = config.adminCouch
+  , pe = '/_users/_design/_auth/_list/email/listAll?email=' + encodeURIComponent(em)
+  
+  couch.get(pe, function PE (er, resp, data) {
     // got multiple usernames with that email address
     // show a view where we can choose the right user
     // after chosing we get data.selectName
-    if (u.length > 1) {
-      return res.template('password-recovery-choose-user.ejs', {users: u})
+    if (data.length > 1) {
+      return res.template('password-recovery-choose-user.ejs', {users: data})
     }
     // just one user with that email address
-    if (u.length === 1) {
-      name = u[0]
+    if (data.length === 1) {
+      name = data[0]
       return lookupUserByUsername(name, req, res)
     }
 
