@@ -27,7 +27,7 @@ function site (req, res) {
 
   var parsed = url.parse(req.url)
   var pathname = parsed.pathname
-  pathname = pathname.replace(/%2e/ig, '.').replace(/\.\.\//, '/')
+  pathname = pathname.replace(/%2f/ig, '/').replace(/%2e/ig, '.').replace(/\.\.\//, '/')
   var normalPathname = path.normalize(pathname).replace(/\\/g, '/');
 
   // multiple //// chars in the path are stupid and should not be,
