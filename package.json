@@ -28,7 +28,7 @@
     "gravatar": "~1.0.6",
     "moment": "~1.6.2",
     "canonical-host": "0",
-    "st": "~0.2.5",
+    "st": "^0.3.0",
     "minimatch": "~0.2.6",
     "sanitizer": "^0.1.1",
     "npm-registry-client": "~0.2.24",
