@@ -13,7 +13,14 @@ var LRU = require("lru-cache")
 , url = require('url')
 
 function urlPolicy (u) {
-  u = url.parse(u)
+  u = {
+    protocol: u.scheme_ + ':',
+    host: u.domain_ + (u.port_ ? ':' + u.port_ : ''),
+    pathname: u.path_,
+    query: u.query_,
+    hash: u.fragment_
+  }
+  u = url.parse(url.format(u))
   if (!u) return null
   if (u.protocol === 'http:' &&
       (u.hostname && u.hostname.match(/gravatar.com$/))) {
