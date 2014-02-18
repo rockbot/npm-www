@@ -3,7 +3,7 @@
   "name": "npm-www",
   "homepage": "http://npmjs.org/",
   "description": "website for npm",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "dependencies": {
     "request": "~2.21.0",
     "marked": "^0.3.1",
