@@ -52,7 +52,8 @@ config.canonicalHost = h
 var canon = config.canon = require('canonical-host')(h, lh, 301)
 
 config.stamp = 'pid=' + process.pid + ' ' +
-               'worker=' + cluster.worker.id + ' ' + gitHead + ' ' + lh
+               'worker=' + cluster.worker.id + ' ' + gitHead + ' ' + h +
+               ' ' + process.env.SMF_ZONENAME
 
 config.log.worker = cluster.worker.id
 config.log.pid = process.pid
