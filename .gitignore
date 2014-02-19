@@ -14,8 +14,6 @@ couch.log
 redis.log
 dev/redis/dump.rdb
 npm-debug.log
-static/style.css
-static/webfonts/
 search.log
 dev/elasticsearch/data
 dev/elasticsearch/logs
