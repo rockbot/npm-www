@@ -79,13 +79,15 @@ if (config.couchAuth) {
 }
 config.anonCouch = new CouchLogin(config.registryCouch, NaN)
 
-RedSess.createClient(config.redis)
-
 // a general purpose redis thing.
 // Note: for sessions, use req.session, not this!
 var r = config.redis
-, redis = require('redis')
-config.redis.client = redis.createClient(r.port, r.host, r)
+, Wredis = require('wredis')
+
+config.redis.client = new Wredis(r)
+
+RedSess.setClient(config.redis.client)
+
 if (r.auth) config.redis.client.auth(r.auth)
 
 if (config.https) {
