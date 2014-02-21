@@ -10,7 +10,9 @@ exports.elasticsearch = {
 exports.cluster = { size : require("os").cpus().length }
 
 // redis auth
-exports.redis = { host: '127.0.0.1', port: 6379 }
+exports.redis = {}
+exports.redis.reader = { host: '127.0.0.1', port: 6379 }
+exports.redis.writer = { host: '127.0.0.1', port: 6379 }
 
 exports.registryCouch = "https://skimdb.npmjs.com/"
 
@@ -96,8 +98,8 @@ Object.keys(admin).forEach(function (k) {
   if (k === 'redisAuth') {
     exports.redis.auth = admin[k]
   } else if (k === 'redis') {
-    exports.redis.host = admin.redis.host;
-    exports.redis.port = admin.redis.port;
+    exports.redis.reader = admin.redis.reader
+    exports.redis.writer = admin.redis.writer
   }
   exports[k] = admin[k]
 })

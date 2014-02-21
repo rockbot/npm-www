@@ -39,7 +39,7 @@
     "graceful-fs": "~1.2.0",
     "async-cache": "~0.1.2",
     "npm-user-validate": "0",
-    "wredis": "0.0.1"
+    "wredis": "^0.0.2"
   },
   "bundleDependencies": [
     "request",

@@ -79,14 +79,20 @@ if (config.couchAuth) {
 }
 config.anonCouch = new CouchLogin(config.registryCouch, NaN)
 
-RedSess.createClient(config.redis)
-
 // a general purpose redis thing.
 // Note: for sessions, use req.session, not this!
+console.error('boom0')
 var r = config.redis
-, redis = require('redis')
-config.redis.client = redis.createClient(r.port, r.host, r)
+, Wredis = require('wredis')
+
+config.redis.client = new Wredis(r)
+
+RedSess.setClient(config.redis.client)
+console.error('boom3')
+
+console.error('r.auth: ', r.auth)
 if (r.auth) config.redis.client.auth(r.auth)
+console.error('boom4')
 
 if (config.https) {
   server = https.createServer(config.https, site)
@@ -133,6 +139,7 @@ function closeAll () {
   }
   RedSess.close()
 
+  // how about this??
   try { config.redis.client.quit() } catch (e) {
     logger.error('error quitting redis client', e)
   }

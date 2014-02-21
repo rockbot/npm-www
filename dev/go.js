@@ -105,7 +105,9 @@ queue(function (cb) {
   config.couchAuth = 'admin:admin'
   config.registryCouch = 'http://localhost:15984/'
   config.registryCouch = 'http://localhost:15984/'
-  config.redis = { host: '127.0.0.1', port: 16379 }
+  config.redis = {}
+  config.redis.reader = { host: '127.0.0.1', port: 16379 }
+  config.redis.writer = { host: '127.0.0.1', port: 16379 }
   config.redisAuth = 'i-am-using-redis-in-development-mode-for-npm-www'
   config.keys = ['these keys are for dev mode only']
 

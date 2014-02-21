@@ -63,6 +63,13 @@ describe('Wredis', function() {
         })
     })
 
+    it('inherits from EventEmitter', function() {
+        client.must.have.property('once')
+        client.once.must.be.a.function()
+        client.must.have.property('addListener')
+        client.addListener.must.be.a.function()
+    })
+
     after(function(done) {
         client.del('foo', function(err, reply) {
             client.quit(function(err) {

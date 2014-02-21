@@ -1,6 +1,6 @@
 # wredis
 
-A simple wrapper for two redis clients. It directs write commands to one client & read commands to the other. It does *not* support any meta commands that act upon the redis server; it only wraps data read & write operations.
+A simple wrapper for two redis clients. It directs write commands to one client & read commands to the other. It does *not* support any meta commands that act upon the redis server; it only wraps data read & write operations. See [commands.js](https://github.com/npm/wredis/blob/master/commands.js) for the full list. Other functions supported: `auth()`, `select()`, `quit()`, and `end()`.
 
 ## Usage
 
