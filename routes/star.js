@@ -1,7 +1,7 @@
 module.exports = star
 
 function star (req, res) {
-  if (req.method === 'GET') return res.redirect('browse/userstar/' + req.cookies.get('name'))
+  if (req.method === 'GET') return res.redirect('browse/userstar/' + (req.cookies.get('name') || '')) 
   if (req.method != 'POST') return res.error(405, 'Method not allowed')
 
   req.maxLength = 255
