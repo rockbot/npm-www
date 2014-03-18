@@ -97,7 +97,7 @@
   "devDependencies": {
     "replicate": "git://github.com/isaacs/replicate",
     "touch": "0",
-    "npm2es": "~0.4.0",
+    "npm2es": "git://github.com/npm/npm2es",
     "once": "~1.1.1"
   },
   "repository": {
