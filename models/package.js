@@ -127,7 +127,7 @@ function parseReadme (data) {
           .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
           .replace(/>/g, '&gt;')
-    p = sanitizer.sanitize(p, urlPolicy(p))
+    p = '<pre>' + sanitizer.sanitize(p, urlPolicy(p)) + '</pre>'
   }
   return sanitizer.sanitize(p, urlPolicy(data))
 }
