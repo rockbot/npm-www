@@ -6,20 +6,35 @@
   <% search.hits.hits.forEach(function(hit) { %>
   <li class="search-result package">
     <h2><a href="/package/<%= encodeURI(hit.fields.name) %>"><%= sanitize(hit.fields.name) %></a></h2>
-    <p class="details">
-      <%= hit.fields.version %> by
-      <a href="/~<%= hit.fields.author %>"><%= hit.fields.author %></a>
-    </p>
-    <p><%= sanitize(hit.fields.description) %></p>
-    <% if (hit.fields && hit.fields.keywords && hit.fields.keywords.length) { %>
-    <ul class="keywords">
-      <% hit.fields.keywords.forEach(function(keyword, idx) { %>
-        <li>
-          <a href="/browse/keyword/<%= encodeURI(keyword) %>"><%= sanitize(keyword) %></a><% if(idx<hit.fields.keywords.length-1) { %>, <% } %>
-        </li>
-      <% }) %>
+    <ul class="hud">
+      <li class="dlScore" title="average downloads"><span
+      <% if (parseFloat(hit.fields.dlScore) > 1) { %>
+        class="dlScore dlScore-increasing" title="more downloads this week than average over this past month">
+      <% } else if (hit.fields.dlScore < 1) { %>
+        class="dlScore dlScore-decreasing" title="fewer downloads this week than average over this past month">
+      <% } else { %>
+        class="dlScore dlScore-steady" title="same downloads this week than average over this past month">
+      <% } %>
+        <%= hit.fields.dlDay %>
+      </span></li>
+      <li class="stars" title="number of stars by users"><%= hit.fields.stars %></li>
     </ul>
-    <% } %>
+    <p class="description"><%= sanitize(hit.fields.description) %></p>
+    <div class="details">
+      <span class="version">
+        <%= hit.fields.version %> by
+        <a href="/~<%= hit.fields.author %>"><%= hit.fields.author %></a>
+      </span>
+      <% if (hit.fields && hit.fields.keywords && hit.fields.keywords.length) { %>
+      <ul class="keywords">
+        <% hit.fields.keywords.forEach(function(keyword, idx) { %>
+          <li>
+            <a href="/browse/keyword/<%= encodeURI(keyword) %>"><%= sanitize(keyword) %></a><% if(idx<hit.fields.keywords.length-1) { %>, <% } %>
+          </li>
+        <% }) %>
+      </ul>
+      <% } %>
+    </div>
   </li>
   <% }); %>
 </ul>

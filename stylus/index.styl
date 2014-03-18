@@ -343,9 +343,19 @@ table.downloads {
 }
 
 .search-result .details {
-  position:absolute;
-  top:1em;
-  right:0;
+  position: relative;
+  margin-top: 5px;
+  font-size: .85em
+  clearfix()
+}
+
+.search-result .version {
+  // position:absolute;
+  // bottom:-14px;
+  // right:0;
+  width: 30%;
+  text-align: right;
+  float right  
 }
 
 .search-result ul li {
@@ -354,8 +364,57 @@ table.downloads {
 }
 
 .package.search-result ul.keywords {
-  display:inline;
-  font-size: .85em
+  display:block;
+  width: 70%;
+}
+
+.package.search-result ul.hud {
+  display: block;
+  width: 25%;
+  absolute top 2em right 0  
+  text-align: right
+  font-size 0.9em
+
+  .dlScore {
+    margin-right 15px
+
+    &::after {
+      background-image: url("/static/icon_download.png");
+      background-size: 10px 10px;
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      margin-left: -17px;
+      bottom: 6px;
+    }
+
+  }
+
+  .dlScore-increasing::after {
+    background-image: url("/static/icon_up.png");
+    margin-left: 11px;
+  }
+
+  .dlScore-decreasing::after {
+    background-image: url("/static/icon_down.png");
+    margin-left: 11px;
+  }
+
+  .dlScore-steady::after {
+    background-image: url("/static/icon_right.png");
+    margin-left: 11px;
+  }
+
+  .stars::before {
+    content: "\00a0"
+  }
+
+  .stars::after {
+    content: "★"
+    color: #F7C138
+    margin-left: 2px
+  }
 }
 
 html body ul.search-results .package.search-result {
@@ -453,7 +512,7 @@ html body ul.search-results .package.search-result {
     }
   }
   .star-starred {
-    color: gold;  
+    color: #F7C138;  
     &:before {
       content: '★ '
     }
