@@ -22,12 +22,12 @@ function search(params, cb) {
   var url = config.elasticsearch.url + '/package/_search?' + querystring.stringify(qs)
 
   var payload = {
-    "fields": ["name", "keywords", "description", "author", "version", "stars", "dlScore"],
+    "fields": ["name", "keywords", "description", "author", "version", "stars", "dlScore", "dlDay"],
     "query": {
       "function_score": {
         "query": {
           "multi_match": {
-            "query": "util",
+            "query": params.q,
             "fields": ["name^4", "keywords^2", "description", "readme"]
           }
         },
