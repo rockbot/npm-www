@@ -30,7 +30,7 @@ var ErrorPage = require("error-page")
 function ErrorPageWithMetrics(req, res, errorPageConf) {
   var original = ErrorPage(req, res, errorPageConf)
   var errFunc = function WrappedErrorPage(status) {
-    req.metrics.counter('error|' + status + '|' + req.pathname)
+    // req.metrics.counter('error|' + status + '|' + req.pathname)
     original(status)
   }
   return errFunc
