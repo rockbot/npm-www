@@ -169,8 +169,9 @@ function setLicense (data, v) {
   }
 
   if (typeof license === 'string') {
-    if (license.match(/(http|https)(:\/\/)/ig)) {
-      data.license.url = data.license.type = license
+    var parsedLicense = url.parse(license)
+    if (parsedLicense && parsedLicense.protocol && parsedLicense.protocol.match(/^https?:$/)) {
+      data.license.url = data.license.type = parsedLicense.href
     } else {
       data.license.url = getOssLicenseUrlFromName(license)
       data.license.name = license
