@@ -31,6 +31,7 @@
     "npm": "^1.4.4",
     "npm-registry-client": "~0.2.24",
     "npm-user-validate": "0",
+    "npm2es": "git://github.com/npm/npm2es.git",
     "npmconf": "0.0",
     "redis": "~0.8.1",
     "redsess": "~0.3.2",
@@ -97,7 +98,6 @@
   "devDependencies": {
     "replicate": "git://github.com/isaacs/replicate",
     "touch": "0",
-    "npm2es": "git://github.com/npm/npm2es",
     "once": "~1.1.1"
   },
   "repository": {
