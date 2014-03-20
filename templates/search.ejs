@@ -15,7 +15,7 @@
       <% } else { %>
         class="dlScore dlScore-steady" title="same downloads this week than average over this past month">
       <% } %>
-        <%= hit.fields.dlDay %>
+        <%= hit.fields.dlDay || 0 %>
       </span></li>
       <li class="stars" title="number of stars by users"><%= hit.fields.stars %></li>
     </ul>
