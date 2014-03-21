@@ -62,8 +62,10 @@ function handleForm (req, res) {
         }
 
         res.session.get('done', function (er, done) {
+          var donePath = done ? url.parse(done) : null
+
           res.session.del('done')
-          res.redirect(done || '/profile')
+          res.redirect(donePath ? donePath.pathname : '/profile')
         })
       })
     })

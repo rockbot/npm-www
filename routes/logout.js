@@ -1,3 +1,5 @@
+var url = require('url')
+
 module.exports = function (req, res) {
   // delete the session from couch.
   // also delete any other login bits.
@@ -6,10 +8,11 @@ module.exports = function (req, res) {
   function next () {
     // delete the whole session
     req.session.get('done', function (er, done) {
-      done = done || '/'
+      var donePath = done ? url.parse(done) : null
+
       req.session.del(function (er) {
         if (er) return res.error(er)
-        res.redirect(done)
+        res.redirect(donePath ? donePath.pathname : '/')
       })
     })
   }
