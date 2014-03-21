@@ -17,7 +17,7 @@
       <% } %>
         <%= hit.fields.dlDay || 0 %>
       </span></li>
-      <li class="stars" title="number of stars by users"><%= hit.fields.stars %></li>
+      <li class="stars" title="number of stars by users"><%= hit.fields.stars || 0 %></li>
     </ul>
     <p class="description"><%= sanitize(hit.fields.description) %></p>
     <div class="details">
