@@ -20,7 +20,7 @@ function urlPolicy (pkgData) {
       if (!gh) return null
       // temporary fix for relative links in github readmes, until a more general fix is needed
       var v = url.parse(gh)
-      if (u.path_) { v.pathname = v.pathname + '/blob/master/' + u.path_} 
+      if (u.path_) { v.pathname = v.pathname + '/blob/master/' + u.path_}
       u = {
         protocol: v.protocol,
         host: v.host,
@@ -90,6 +90,10 @@ function package (params, cb) {
         data.readmeSrc = null
       }
       data.fromNow = moment(t).fromNow()
+      data._npmUser = data.versions[v]._npmUser || null
+
+      // check if publisher is in maintainers list
+      data.publisherIsInMaintainersList = isPubInMaint(data)
 
       setLicense(data, v)
     }
@@ -132,8 +136,23 @@ function parseReadme (data) {
   return sanitizer.sanitize(p, urlPolicy(data))
 }
 
+function isPubInMaint (data) {
+  if (data.maintainers && data._npmUser) {
+    for (var i = 0; i < data.maintainers.length; i++) {
+      if (data.maintainers[i].name === data._npmUser.name) {
+        return true
+      }
+    }
+  }
+
+  return false
+}
+
 function gravatarPeople (data) {
   gravatarPerson(data.author)
+
+  if (data._npmUser) gravatarPerson(data._npmUser)
+
   if (data.maintainers) data.maintainers.forEach(function (m) {
     gravatarPerson(m)
   })
