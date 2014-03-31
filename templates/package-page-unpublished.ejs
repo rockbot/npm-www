@@ -1,0 +1,41 @@
+<%- include('header.ejs', locals) %>
+
+  <div id="package">
+    <header class="unpublished">
+      <h1><%= package.name %></h1>
+    </header>
+
+    <p>This package has been unpublished.</p>
+
+    <table class="metadata">
+      <% if (package.time.unpublished.description) { %>
+      <tr>
+        <th>Description</th>
+        <td class="description"><%= package.time.unpublished.description %></td>
+        <!-- <p class="description"><%= package.time.unpublished.description %></p> -->
+      </tr>
+      <% } %>
+
+      <% if (package.time && package.time.unpublished) { %>
+      <tr>
+        <th>Unpublished By</th>
+        <td>
+          <div class="user">
+          <a class="username" href="/~<%= package.time.unpublished.name %>">
+            <%= package.time.unpublished.name %></a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>Unpublished On</th>
+        <td>
+          <%= package.unpubFromNow %>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+
+  </div>
+
+<%- include('footer.ejs', locals) %>
+<script src="/static/stars.js" async="true"></script>

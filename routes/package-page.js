@@ -47,6 +47,16 @@ function packagePage (req, res) {
         return res.error(404)
       }
 
+      if (p.time && p.time.unpublished) {
+        var locals = {
+          package: p,
+          profile: profileModel.profile,
+          title: m.package.name
+        }
+
+        return res.template('package-page-unpublished.ejs', locals, 404)
+      }
+
       // should we print the maintainers list?
       p.showMaintainers = p.maintainers && (!p._npmUser || (p.publisherIsInMaintainersList && p.maintainers.length > 1))
 

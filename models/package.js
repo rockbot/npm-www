@@ -107,6 +107,11 @@ function package (params, cb) {
       setLicense(data, v)
     }
 
+    if (data.time && data.time.unpublished) {
+      var t = data.time.unpublished.time
+      data.unpubFromNow = moment(t)
+    }
+
     if (data.homepage && typeof data.homepage !== 'string') {
       if (Array.isArray(data.homepage))
         data.homepage = data.homepage[0]
