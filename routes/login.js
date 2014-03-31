@@ -68,7 +68,7 @@ function handleForm (req, res) {
           if (done) {
             // Make sure that we don't ever leave this domain after login
             // resolve against a fqdn, and take the resulting pathname
-            done = url.resolveObject('https://example.com/login', done)
+            done = url.resolveObject('https://example.com/login', done.replace(/\\/g, '/'))
             donePath = done.pathname
           }
 
