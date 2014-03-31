@@ -1,5 +1,3 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-
 var touch = require('touch')
 var spawn = require('child_process').spawn
 var once = require('once')
