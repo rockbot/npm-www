@@ -93,7 +93,7 @@ if (env === 'production') {
 }
 
 exports.metrics = {
-    collectors: [ '54.186.0.239:8876' ],
+    collectors: [ 'metrics.internal.npmjs.com:8876' ],
     prefix:     'npm-www'
 }
 

@@ -168,7 +168,7 @@ function launchWww (er) {
   }
 
   config.metrics = {
-      collectors: [ '54.186.0.239:8877' ],
+      collectors: [ 'metrics.internal.npmjs.com:8877' ],
       prefix:     'npm-www-dev'
   }
 
