@@ -2,12 +2,7 @@ module.exports = browse
 var qs = require('querystring')
 var metrics = require('../metrics-client.js')()
 
-var LRU = require('lru-cache')
-var cache = new LRU({
-  max: 10000,
-  length: function (n) { return n.length },
-  maxAge: 1000 * 60
-})
+var config = require('../config.js')
 
 var viewNames = {
   all: 'browseAll',
@@ -106,62 +101,69 @@ var npm = require('npm')
 var fetching = {}
 function browse (type, arg, skip, limit, cb) {
   var key = [type, arg, skip, limit].join(',')
-  var cached = cache.get(key)
-  if (cached) return process.nextTick(cb.bind(null, null, cached))
-
-  if (fetching[key]) {
-    fetching[key].push(cb)
-    return
-  }
-
-  fetching[key] = [cb]
-
-  var u = '/-/_view/' + viewNames[type]
-  var query = {}
-  query.group_level = (arg ? groupLevelArg : groupLevel)[type]
-  if (arg) {
-    query.startkey = JSON.stringify([arg])
-    query.endkey = JSON.stringify([arg, {}])
-  }
-
-  // if it normally has an arg, but not today,
-  // fetch everything, and sort in descending order by value
-  // manually, since couchdb can't do this.
-  // otherwise, just fetch paginatedly
-  if (arg || !transformKeyArg[type]) {
-    query.skip = skip
-    query.limit = limit
-  }
-
-  if (type === 'updated') query.descending = true
-
-  // We are always ok with getting stale data, rather than wait for
-  // couch to generate new view data.
-  query.stale = 'update_after'
-
-  u += '?' + qs.stringify(query)
-
-  var timing = {}
-  timing.start = Date.now()
-
-  npm.registry.get(u, function (er, data, res) {
-
-    timing.end = Date.now()
-    metrics.histogram('registry-latency>browse|' + type + '|' + arg, timing.end - timing.start)
+  config.redis.client.get(key, function (er, data) {
+    if (er) cb(er)
 
     if (data) {
-      data = transform(type, arg, data, skip, limit)
-      cache.set(key, data)
+      metrics.counter('registry-cache>browse|' + type + '|' + arg)
+      return cb(null, JSON.parse(data))
     }
-    var cbs = fetching[key]
-    delete fetching[key]
-    cbs.forEach(function (cb) {
-      if (er) {
-        console.error("Error fetching browse data", er)
-        data = []
-        er = null
+
+    if (fetching[key]) {
+      fetching[key].push(cb)
+      return
+    }
+
+    fetching[key] = [cb]
+
+    var u = '/-/_view/' + viewNames[type]
+    var query = {}
+    query.group_level = (arg ? groupLevelArg : groupLevel)[type]
+    if (arg) {
+      query.startkey = JSON.stringify([arg])
+      query.endkey = JSON.stringify([arg, {}])
+    }
+
+    // if it normally has an arg, but not today,
+    // fetch everything, and sort in descending order by value
+    // manually, since couchdb can't do this.
+    // otherwise, just fetch paginatedly
+    if (arg || !transformKeyArg[type]) {
+      query.skip = skip
+      query.limit = limit
+    }
+
+    if (type === 'updated') query.descending = true
+
+    // We are always ok with getting stale data, rather than wait for
+    // couch to generate new view data.
+    query.stale = 'update_after'
+
+    u += '?' + qs.stringify(query)
+
+    var timing = {}
+    timing.start = Date.now()
+
+    npm.registry.get(u, function (er, data, res) {
+
+      timing.end = Date.now()
+      metrics.histogram('registry-latency>browse|' + type + '|' + arg, timing.end - timing.start)
+
+      if (data) {
+        data = transform(type, arg, data, skip, limit)
+        var cacheExpiration = 60 //seconds
+        config.redis.client.set(key, JSON.stringify(data), 'EX', cacheExpiration)
       }
-      cb(er, data)
+      var cbs = fetching[key]
+      delete fetching[key]
+      cbs.forEach(function (cb) {
+        if (er) {
+          console.error("Error fetching browse data", er)
+          data = []
+          er = null
+        }
+        cb(er, data)
+      })
     })
   })
 }
