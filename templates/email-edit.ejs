@@ -19,7 +19,6 @@ just to verify that this is intentional.</p>
 
 
 <form method=post action=/email-edit>
-  <input type=hidden name=password_hash value="<%= profile.password_sha || profile.derived_key %>">
   <input type=hidden name=_id value="<%= profile._id %>">
   <input type=hidden name=name value="<%= profile.name %>">
 

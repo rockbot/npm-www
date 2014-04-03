@@ -119,13 +119,6 @@ function handle (req, res) {
         }, 403)
       }
 
-      if (profHash !== data.password_hash) {
-        return res.template('email-edit.ejs', {
-          error: 'Corrupted form data',
-          profile: profile
-        }, 403)
-      }
-
       handle_(req, res, profile, email2)
     })
   })

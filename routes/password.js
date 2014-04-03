@@ -60,11 +60,6 @@ function handleData (req, res, data) {
     return res.template('password.ejs', td, 403)
   }
 
-  if (hashProf !== data.password_hash) {
-    td.error = 'Corrupted form data'
-    return res.template('password.ejs', td, 403)
-  }
-
   if (data.new !== data.verify) {
     td.error = 'Failed to verify password'
     return res.template('password.ejs', td, 403)
