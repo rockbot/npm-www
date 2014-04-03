@@ -37,6 +37,10 @@ function handle (req, res) {
   })
 }
 
+function pbkdf2 (pass, salt, iterations) {
+  return crypto.pbkdf2Sync(pass, salt, iterations, 20).toString('hex')
+}
+
 function sha (s) {
   return crypto.createHash("sha1").update(s).digest("hex")
 }
@@ -46,15 +50,17 @@ function handleData (req, res, data) {
 
   var prof = req.profile
   , salt = prof.salt
-  , hashCurrent = sha(data.current + salt)
   , td = {profile: req.profile, error: null}
+  , hashCurrent = prof.password_sha ? sha(data.current + salt) :
+                    pbkdf2(data.current, salt, parseInt(prof.iterations,10))
+  , hashProf = prof.password_sha || prof.derived_key
 
-  if (hashCurrent !== prof.password_sha) {
+  if (hashCurrent !== hashProf) {
     td.error = 'Invalid current password'
     return res.template('password.ejs', td, 403)
   }
 
-  if (prof.password_sha !== data.password_sha) {
+  if (hashProf !== data.password_hash) {
     td.error = 'Corrupted form data'
     return res.template('password.ejs', td, 403)
   }

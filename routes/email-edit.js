@@ -108,15 +108,18 @@ function handle (req, res) {
     login(req, res, function (profile) {
       // first verify the password was posted in is valid
       var salt = profile.salt
-      var pwhash = sha(data.password + salt)
-      if (pwhash !== profile.password_sha) {
+      var pwhash = profile.password_sha ? sha(data.password + salt) :
+                   pbkdf2(data.password, salt, parseInt(profile.iterations,10))
+      var profHash = profile.password_sha || profile.derived_key
+
+      if (pwhash !== profHash) {
         return res.template('email-edit.ejs', {
           error: 'Invalid password',
           profile: profile
         }, 403)
       }
 
-      if (profile.password_sha !== data.password_sha) {
+      if (profHash !== data.password_hash) {
         return res.template('email-edit.ejs', {
           error: 'Corrupted form data',
           profile: profile
@@ -248,6 +251,10 @@ function sendEmails (conf, rev, profile, req, res) {
 
 function sha (s) {
   return crypto.createHash("sha1").update(s).digest("hex")
+}
+
+function pbkdf2 (pass, salt, iterations) {
+  return crypto.pbkdf2Sync(pass, salt, iterations, 20).toString('hex')
 }
 
 function login (req, res, cb) {

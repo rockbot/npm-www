@@ -51,6 +51,7 @@ function saveThenShow (data, req, res) {
           k === 'roles' ||
           k === 'email' ||
           k === 'password_sha' ||
+          k === 'derived_key' ||
           k === 'salt') {
         return
       }
