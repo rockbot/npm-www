@@ -90,8 +90,8 @@
     "start": "node server.js",
     "show-conf": "node config.js",
     "dev": "node dev/go.js | bunyan -l warn",
-    "dev-www": "node dev/go.js www-only",
-    "dev-db": "node dev/go.js db-only",
+    "dev-www": "node dev/go.js www-only | bunyan -l warn",
+    "dev-db": "node dev/go.js db-only | bunyan -l warn",
     "repl": "node repl.js",
     "dev-repl": "CLUSTER_MASTER_REPL=15337 node repl.js"
   },
