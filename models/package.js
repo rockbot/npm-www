@@ -67,68 +67,70 @@ function package (params, cb) {
     // if error, let us know
     if (er) return cb(er)
 
-    if (data) {
-      metrics.counter('registry-cache>package|' + name + '|' + version)
-      return cb(null, JSON.parse(data))
-    }
+    config.redis.client.ttl('package:' + k, function (er, ttl) {
+      if (data && ttl > -1) {
+        metrics.counter('registry-cache>package|' + name + '|' + version)
+        return cb(null, JSON.parse(data))
+      }
 
-    var uri = name
-    if (version) uri += '/' + version
+      var uri = name
+      if (version) uri += '/' + version
 
-    var timing = {}
-    timing.start = Date.now()
+      var timing = {}
+      timing.start = Date.now()
 
-    npm.registry.get(uri, 1, false, true, function (er, data) {
+      npm.registry.get(uri, 1, false, true, function (er, data) {
 
-      timing.end = Date.now()
-      metrics.histogram('registry-latency>package|' + name + '|' + version, timing.end - timing.start)
+        timing.end = Date.now()
+        metrics.histogram('registry-latency>package|' + name + '|' + version, timing.end - timing.start)
 
-      if (er) return cb(er)
-      data.starredBy = Object.keys(data.users || {}).sort()
-      var len = data.starredBy.length
+        if (er) return cb(er)
+        data.starredBy = Object.keys(data.users || {}).sort()
+        var len = data.starredBy.length
 
-      if (data.time && data['dist-tags']) {
-        var v = data['dist-tags'].latest
-        var t = data.time[v]
-        if (!data.versions[v]) {
-          console.error('invalid package data: %s', data._id)
-          return cb(new Error('invalid package: '+ data._id))
+        if (data.time && data['dist-tags']) {
+          var v = data['dist-tags'].latest
+          var t = data.time[v]
+          if (!data.versions[v]) {
+            console.error('invalid package data: %s', data._id)
+            return cb(new Error('invalid package: '+ data._id))
+          }
+          data.version = v
+          if (data.versions[v].readme) {
+            data.readme = data.versions[v].readme
+            data.readmeSrc = null
+          }
+          data.fromNow = moment(t).fromNow()
+          data._npmUser = data.versions[v]._npmUser || null
+
+          // check if publisher is in maintainers list
+          data.publisherIsInMaintainersList = isPubInMaint(data)
+
+          setLicense(data, v)
         }
-        data.version = v
-        if (data.versions[v].readme) {
-          data.readme = data.versions[v].readme
-          data.readmeSrc = null
+
+        if (data.time && data.time.unpublished) {
+          var t = data.time.unpublished.time
+          data.unpubFromNow = moment(t)
         }
-        data.fromNow = moment(t).fromNow()
-        data._npmUser = data.versions[v]._npmUser || null
 
-        // check if publisher is in maintainers list
-        data.publisherIsInMaintainersList = isPubInMaint(data)
+        if (data.homepage && typeof data.homepage !== 'string') {
+          if (Array.isArray(data.homepage))
+            data.homepage = data.homepage[0]
+          if (typeof data.homepage !== 'string')
+            delete data.homepage
+        }
 
-        setLicense(data, v)
-      }
+        if (data.readme && !data.readmeSrc) {
+          data.readmeSrc = data.readme
+          data.readme = parseReadme(data)
+        }
+        gravatarPeople(data)
 
-      if (data.time && data.time.unpublished) {
-        var t = data.time.unpublished.time
-        data.unpubFromNow = moment(t)
-      }
-
-      if (data.homepage && typeof data.homepage !== 'string') {
-        if (Array.isArray(data.homepage))
-          data.homepage = data.homepage[0]
-        if (typeof data.homepage !== 'string')
-          delete data.homepage
-      }
-
-      if (data.readme && !data.readmeSrc) {
-        data.readmeSrc = data.readme
-        data.readme = parseReadme(data)
-      }
-      gravatarPeople(data)
-
-      var cacheExpiration = 60 //seconds
-      config.redis.client.set(k, JSON.stringify(data), 'EX', cacheExpiration, function (er, resp) {
-        return cb(er, data)
+        var cacheExpiration = 60 //seconds
+        config.redis.client.set('package:' + k, JSON.stringify(data), 'EX', cacheExpiration, function (er, resp) {
+          return cb(er, data)
+        })
       })
     })
   })
