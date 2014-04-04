@@ -1,33 +1,116 @@
-The new npmjs.org website.
-
-## Visual specs
-
-* http://chrisglass.com/work/npm/specs/
-* http://chrisglass.com/work/npm/
+This is the code that runs www.npmjs.org.
 
 ## Getting Started
 
-First install couchdb, and redis, and elasticsearch and clone the repo.
+First, clone this repo.
 
-```bash
-# first grab all the deps, though most of the important ones are
-# already checked in.
-npm install
+If you have a reasonably new machine, we strongly recommend using Virtualbox
+and Vagrant to run a pre-configured VM containing [couchdb](http://couchdb.apache.org/),
+[redis](http://redis.io/), and [elasticsearch](http://www.elasticsearch.org/),
+all ready to go. If your machine struggles to run a VM, or you are suspicious
+of VMs, you will need to install them yourself.
 
-# to start the dev-node script, which also dumps redis and couchdb
-# logs to stdio, and automatically bunyan-ifies the server logs,
-# and clones 1/256th of the published packages and all of the public
-# user accounts.  This also creates a user named 'admin' with the
-# password 'admin', which you can use to log in and do stuff.
-# This defaults to listening with a highly insecure SSL key, on
-# port 15443.
-npm run dev
+### 1a. Recommended setup: pre-built VM
 
-# to run the real actual server like in production, copy the
-# config.admin.example.js to config.admin.js, fill in the appropriate
-# fields, and then
-npm start
-```
+First [install VirtualBox](https://www.virtualbox.org/wiki/Downloads), which is
+free for personal use.
+
+Then [install Vagrant](https://www.vagrantup.com/downloads.html), also free.
+
+Now go into the root of the repo and run
+
+`vagrant up`
+
+this will download the VM image (~700MB, so go grab a cup of coffee) and start
+the VM. After this first run, the VM image will already be available on your
+machine, so vagrant up will only take a few seconds.
+
+Now get access to the machine, super simple:
+
+`vagrant ssh`
+
+You are now inside the VM! The code in the repo is linked to `/vagrant`, the
+directory you find yourself in when you login. Changes made outside the VM
+will be immediately reflected inside of it and vice versa.
+
+### 1b. Old way: install servers locally
+
+You need to install couchdb, redis, and elasticsearch. On OS X, these are
+available via [homebrew](http://brew.sh/).
+
+All servers should be available and *not running*. npm-www will run them
+itself with the correct configurations; you just need them to be available in
+the path, such that the commands `elasticsearch`, `couchdb` and `redis-server`
+all hit the right binaries.
+
+### 2. npm install
+
+Note that you should be *inside* the VM and at /vagrant when you do this:
+
+`npm install`
+
+Most of the dependencies are checked-in, but a few will get installed when
+you run this.
+
+### 3. Start the server
+
+Again, from inside the VM at /vagrant, run
+
+`npm run dev`
+
+You should see couch, redis and elasticsearch all being started. This can
+take a little while, so wait until you see "STARTING DEV SITE NOW". Once it's
+running, you can see the site by going to
+
+[https://localhost:15443/](https://localhost:15443/)
+
+That's it! You are good to go. You can edit the code from outside the VM and
+the changes will be reflected in the VM. When you're done, remember to exit
+the vm and run
+
+`vagrant suspend`
+
+which will save the VM. `vagrant up` will bring it back much faster after the
+first run.
+
+### 3b. Running the databases and www separately
+
+If you are making front-end changes to the website, you will soon find that
+waiting 60 seconds for the website and all the databases to restart every time
+you make a change to the templates is incredibly tedious. Luckily, there's a
+way to avoid that. SSH into the VM in two separate terminals, and run
+
+`npm run dev-db`
+
+in one terminal. This will launch couch, redis and elasticsearch. Then run
+
+`npm run dev-www`
+
+This will run only the web worker. You can then make changes to templates and
+restart this worker without having to touch the other one, which makes the
+whole thing a lot faster and less painful.
+
+### Under the hood
+
+All the `npm run` commands are simply running the script `dev/go.js` with
+different arguments. They dump redis and couchdb logs to stdio, and
+automatically run the server logs (which are just JSON) into bunyan, which
+parses and prints them neatly.
+
+The couchdb clones 1/256th of the published packages, and comes with a
+hard-coded set of user accounts for testing. It has a user named 'admin' with
+the password 'admin', which you can use to log in and do stuff using futon,
+by going here:
+
+[http://localhost:15984/_utils/](http://localhost:15984/_utils/)
+
+It is also running a copy of Elasti
+
+If you want to run www as if it were in production instead, you need to copy
+`config.admin.example.js` to `config.admin.js`, fill in the appropriate
+fields, and then `npm start`
+
+### Where's the code
 
 Data fetcher thingies are in `models`.  They're all defined in
 `models.js`.
@@ -138,6 +221,11 @@ using stylus, and it is in the `stylus` folder.
 
     This is another reason why a plain-jane HTML site is best.  Search
     engines are awesome at searching it.
+
+## Visual specs
+
+* http://chrisglass.com/work/npm/specs/
+* http://chrisglass.com/work/npm/
 
 ## Contributing
 
