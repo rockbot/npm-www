@@ -145,7 +145,7 @@ function launchWww (er) {
   }
 
   config.port = 15443
-  config.host = '127.0.0.1'
+  config.host = 'localhost'
   config.httpPort = 15080
 
   config.npm = config.npm || {
