@@ -52,6 +52,7 @@ function saveThenShow (data, req, res) {
           k === 'email' ||
           k === 'password_sha' ||
           k === 'derived_key' ||
+          k === 'iterations' ||
           k === 'salt') {
         return
       }
@@ -60,6 +61,8 @@ function saveThenShow (data, req, res) {
 
     prof.type = 'user'
     prof.roles = []
+    if (prof.iterations)
+      prof.iterations = +prof.iterations
 
     var pu = '/_users/' + prof._id
     req.couch.put(pu, prof, function (er, cr, data) {
