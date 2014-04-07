@@ -50,7 +50,7 @@ function transform (data) {
     d.iterations = +d.iterations
 
   // if mustChangePass exists, make sure it's not a string and thus always true!
-  if (d.mustChangePass && d.mustChangePass === 'false') d.mustChangePass = false
+  if (d.mustChangePass) d.mustChangePass = JSON.parse(d.mustChangePass)
 
   return d
 }
