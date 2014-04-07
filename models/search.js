@@ -22,34 +22,62 @@ function search(params, cb) {
   var url = config.elasticsearch.url + '/package/_search?' + querystring.stringify(qs)
 
   var payload = {
-  "fields": ["name", "keywords", "description", "author", "version", "stars", "dlScore", "dlDay", "dlWeek"], "query": {
-    "function_score": {
-      "query": {
-        "multi_match": {
-          "query": params.q,
-          "fields": ["name^4", "keywords^2", "description", "readme"]
-        }
-      },
-      "functions": [
+  "fields": [ "name", "keywords", "description", "author", "version", "stars", "dlScore", "dlDay", "dlWeek" ],
+  "query": {
+    "dis_max": {
+      "tie_breaker": 0.7,
+      "boost": 1.2,
+      "queries": [
         {
-          "script_score": {
-            "script": "_score * (doc['dlScore'].isEmpty() ? 0 : doc['dlScore'].value)"
+          "function_score": {
+            "query": {
+              "match": {
+                "name.untouched": params.q
+              }
+            },
+            "boost_factor": 100
           }
         },
         {
-          "script_score": {
-            "script": "doc['stars'].isEmpty() ? 0 : doc['stars'].value"
+          "bool": {
+            "should": [
+              {"match_phrase": {"name": params.q} },
+              {"match_phrase": {"keywords": params.q} },
+              {"match_phrase": {"description": params.q} },
+              {"match_phrase": {"readme": params.q} }
+            ],
+            "minimum_should_match": 1,
+            "boost": 50
+          }
+        },
+        {
+          "function_score": {
+            "query": {
+              "multi_match": {
+                "query": params.q,
+                "fields": ["name^4", "keywords", "description", "readme"]
+              }
+            },
+            "functions": [
+              {
+                "script_score": {
+                  "script": "(doc['dlScore'].isEmpty() ? 0 : doc['dlScore'].value)"
+                }
+              },
+              {
+                "script_score": {
+                  "script": "doc['stars'].isEmpty() ? 0 : doc['stars'].value"
+                }
+              }
+            ],
+            "score_mode": "sum",
+            "boost_mode": "multiply"
           }
         }
-      ],
-      "score_mode": "sum",
-      "boost_mode": "multiply"
+      ]
     }
   }
 }
-
-
-
 
   request.get({
     url : url,
@@ -65,9 +93,6 @@ function search(params, cb) {
     o.page = page
     o.pageSize = config.elasticsearch.pageSize
 
-    // make sure that an exact match gets the top hit
-    var name = params.q.trim()
-
     if (o && o.error) {
       var er = new Error('Search Error: ' + o.error)
       er.code = o.status || 500
@@ -82,46 +107,6 @@ function search(params, cb) {
       return cb(er, o)
     }
 
-    if (!o.hits ||
-        !o.hits.hits ||
-        !o.hits.hits.length ||
-        o.hits.hits[0]._id === name && page === 0)
-      return cb(e, o)
-
-    o.hits.hits = o.hits.hits.filter(function(n) {
-      return n._id !== name
-    })
-    if (page !== 0) {
-      cb(null, o)
-    } else {
-      package(name, function(er, data) {
-        if (er ||
-            data.name !== name ||
-            !data.versions ||
-            !data['dist-tags'])
-          return cb(null, o)
-
-        if (!data.keywords || !Array.isArray(data.keywords)) {
-          if (typeof data.keywords === 'string')
-            data.keywords = data.keywords.split(/[,\s]+/)
-          else
-            data.keywords = []
-        }
-        o.hits.hits.unshift({
-          _index: 'npm',
-          _type: 'package',
-          _id: name,
-          _score: 9999,
-          fields: {
-            author: data.maintainers[0].name,
-            keywords: data.keywords,
-            description: data.description,
-            version: data['dist-tags'].latest,
-            name: name
-          }
-        })
-        cb(null, o)
-      })
-    }
+    cb(null, o)
   });
 }
