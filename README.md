@@ -104,7 +104,10 @@ by going here:
 
 [http://localhost:15984/_utils/](http://localhost:15984/_utils/)
 
-It is also running a copy of Elasti
+It is also running a copy of Elasticsearch, which you can hit locally if you
+want to test queries or perform admin:
+
+[http://localhost:9200/](http://localhost:9200/)
 
 If you want to run www as if it were in production instead, you need to copy
 `config.admin.example.js` to `config.admin.js`, fill in the appropriate
