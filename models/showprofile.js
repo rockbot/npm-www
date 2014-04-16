@@ -45,13 +45,6 @@ function transform (data) {
 
   d.fields = loadFields(d)
 
-  // iterations must always be a number!
-  if (d.iterations)
-    d.iterations = +d.iterations
-
-  // if mustChangePass exists, make sure it's not a string and thus always true!
-  if (d.mustChangePass) d.mustChangePass = JSON.parse(d.mustChangePass)
-
   return d
 }
 
