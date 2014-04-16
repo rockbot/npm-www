@@ -47,7 +47,7 @@ function indexPage (req, res) {
 
   if (!loading && (Date.now() - lastUpdated > interval)) load()
 
-  req.model.load('root')
+  req.model.load('packagescreated')
 
   // Show download count for the last day, week, and month.
   req.model.loadAs('downloads', 'dlDay', 'last-day', 'point')
@@ -57,9 +57,6 @@ function indexPage (req, res) {
   req.model.load('profile', req)
 
   req.model.end(function (er, m) {
-    var root = m.root || {}
-    var dc = root.doc_count || 3
-    var dcWComma = commaIt(dc -  3) //Design docs
     var locals = {
       profile: m.profile,
       title: 'npm',
@@ -70,7 +67,7 @@ function indexPage (req, res) {
       dlDay: commaIt(m.dlDay || 0),
       dlMonth: commaIt(m.dlMonth || 0),
       dlWeek: commaIt(m.dlWeek || 0),
-      totalPackages: dcWComma
+      totalPackages: commaIt(m.packagescreated || 0)
     }
     res.template("index.ejs", locals)
   })
