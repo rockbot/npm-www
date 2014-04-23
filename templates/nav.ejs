@@ -16,4 +16,20 @@
       <a href="http://www.npmjs.com/jobs/">Jobs</a>
     </li>
   </ul>
+
+  <ul class="hiring">
+    <li class="hiring-group">
+      <a href="/whoshiring">Who's Hiring</a>
+    </li>
+    <% if (typeof hiring !== 'undefined' && hiring.name) { %>
+      <li data-id="<%= hiring.id %>" class="hiring-company">
+        <a href="<%= hiring.url %>">
+          <span><%= hiring.name %></span>
+        </a>
+      </li>
+      <li class="hiring-more">
+        <a href="/whoshiring">+ <%= hiring.numCompanies - 1 %> More...</a>
+      </li>
+    <% } %>
+  </ul>
 </nav>
