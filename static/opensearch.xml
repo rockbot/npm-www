@@ -1,10 +1,10 @@
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
   xmlns:moz="http://www.mozilla.org/2006/browser/search/">
-  <ShortName>NPM</ShortName>
+  <ShortName>npm</ShortName>
   <Description>Package Search</Description>
-  <Url type="text/html" method="get" template="https://npmjs.org/search?q={searchTerms}"/>
+  <Url type="text/html" method="get" template="https://www.npmjs.org/search?q={searchTerms}"/>
   <InputEncoding>UTF-8</InputEncoding>
   <Image height="16" width="16" type="image/vnd.microsoft.icon">
-    https://npmjs.org/favicon.ico
+    https://www.npmjs.org/favicon.ico
   </Image>
 </OpenSearchDescription>
